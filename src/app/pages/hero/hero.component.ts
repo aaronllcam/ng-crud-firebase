@@ -17,8 +17,15 @@ export class HeroComponent implements OnInit {
   }
 
   save(form: NgForm){
+
+    if(form.invalid){
+      console.log("form no valido");
+      return;
+    }
     console.log("2Submit disparado");
-    console.log(form);
+    console.log(form.value);
+    console.log(this.hero);
+
   }
 
 }
