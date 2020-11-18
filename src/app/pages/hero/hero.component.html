@@ -1,1 +1,71 @@
-<p>hero works!</p>
+<!-- <p class="animate__animated animate__bounceInRight">heroes works!</p> -->
+
+<h1>Héroe <small>nombre heroe</small></h1>
+<hr>
+
+<div class="row text-right">
+    <div class="col">
+        <button class="btn btn-primary" routerLink="/heroes">Volver</button>
+    </div>
+</div>
+
+
+<div class="row" class="animate__animated animate__bounceInRight">
+    <div class="col">
+        <form #form="ngForm" (ngSubmit)="save()">
+
+            <div class="form-group">
+                <label>FirebaseID</label>
+                <input type="text" class="form-control" disabled>
+                <small class="form-text text-muted">Este campo es autogenerado</small>
+            </div>
+
+            <div class="form-group">
+                <label>Nombre del Heroe</label>
+                <input  type="text" 
+                        class="form-control"
+                        name="name"
+                        ngModel
+                        placeholder="nombre del heroe"
+                        required
+                        #name="ngModel">
+                <!-- <small class="form-text text-muted">Este campo es autogenerado</small> -->
+            </div>
+            <div class="form-group">
+                <label>Poder</label>
+                <input  type="text" 
+                        class="form-control"
+                        name="power"
+                        ngModel
+                        placeholder="nombre del heroe"
+                        required
+                        #power="ngModel">
+                <!-- <small class="form-text text-muted">Este campo es autogenerado</small> -->
+            </div>
+
+            <div class="form-group">
+                <label>Estado</label>
+                <br>
+                <button type="button" class="btn btn-outline-success w-50">
+                    <i class="far fa-smile"></i>
+                    Vivo
+                </button>
+                <button type="button" class="btn btn-outline-danger w-50">
+                    <i class="far fa-dizzy"></i>
+                    Muerto
+                </button>
+                <!-- <small class="form-text text-muted">Este campo es autogenerado</small> -->
+            </div>
+
+            <hr>
+            <div class="form-group text-center">
+                <button type="submit"
+                        class="btn btn-primary w-25">
+                    <i class="far fa-save mx-2"></i>   
+                    Guardar
+                </button>
+            </div>
+
+        </form>
+    </div>
+</div>
