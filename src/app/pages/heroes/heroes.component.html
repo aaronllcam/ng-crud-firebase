@@ -25,18 +25,28 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td scope="row">hola</td>
-                <td>hola</td>
-                <td>hola</td>
-                <td>hola</td>
-                <td>hola</td>
+            <tr *ngFor="let hero of heroes; let idx = index">
+                <td scope="row">{{idx + 1}}</td>
+                <td>{{hero.name}}</td>
+                <td>{{hero.power}}</td>
+                <td>
+                    <span *ngIf="!hero.alive" class="badge badge-pill badge-danger">                    
+                        <i class="far fa-dizzy p-1"></i>
+                    </span>
+                    <span *ngIf="hero.alive" class="badge badge-pill badge-success">
+                        <i class="far fa-smile p-1"></i>
+                    </span>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-success mr-2" [routerLink]="['/hero', hero.id]">Editar</button>
+                    <button type="button" class="btn btn-danger" (click)="deleteHero(hero.id, idx)">Borrar</button>
+                </td>
             </tr>
         </tbody>
     </table>
 
 
-    <div class="alert alert-primary text-center w-100" role="alert">
+    <div *ngIf="loading" class="alert alert-primary text-center w-100" role="alert">
         <h4>Cargando</h4>
         <p class="pt-3">
             <i class="fas fa-spinner fa-spin fa-2x"></i>
@@ -44,7 +54,7 @@
         <p>Espere por favor</p>
     </div>
 
-    <div class="alert alert-danger text-center w-100" role="alert">
+    <div *ngIf="heroes.length == 0 && !loading" class="alert alert-danger text-center w-100" role="alert">
         <h4>No hay registros</h4>
         <p class="pt-3">
             <i class="fas fa-exclamation fa-2x"></i>
